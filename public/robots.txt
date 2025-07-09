@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Important pages
+Allow: /services
+Allow: /past-transactions
+
+# Sitemap
+Sitemap: https://same-5p4v3hxmn6t-latest.netlify.app/sitemap.xml
+
+# Block access to admin areas (if any exist in the future)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_redirects
+
+# Allow crawling of images
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
