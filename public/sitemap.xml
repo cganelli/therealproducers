@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Home Page -->
+  <url>
+    <loc>https://same-5p4v3hxmn6t-latest.netlify.app/</loc>
+    <lastmod>2024-06-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://same-5p4v3hxmn6t-latest.netlify.app/Real_Producers_Logo.png</image:loc>
+      <image:title>The Real Producers Logo</image:title>
+      <image:caption>Premier Real Estate Team in Miami & Broward Counties</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://same-5p4v3hxmn6t-latest.netlify.app/Viviana_Headshot.png</image:loc>
+      <image:title>Viviana - Real Estate Professional</image:title>
+      <image:caption>Expert Real Estate Agent at The Real Producers</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://same-5p4v3hxmn6t-latest.netlify.app/Eugenia_Headshot.png</image:loc>
+      <image:title>Eugenia - Real Estate Professional</image:title>
+      <image:caption>Expert Real Estate Agent at The Real Producers</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Services Page -->
+  <url>
+    <loc>https://same-5p4v3hxmn6t-latest.netlify.app/services</loc>
+    <lastmod>2024-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Past Transactions Page -->
+  <url>
+    <loc>https://same-5p4v3hxmn6t-latest.netlify.app/past-transactions</loc>
+    <lastmod>2024-06-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://same-5p4v3hxmn6t-latest.netlify.app/Compressed_650_Miami.png</image:loc>
+      <image:title>650 NE 64th St APT 609, Miami, FL 33138</image:title>
+      <image:caption>Successful Real Estate Transaction by The Real Producers</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://same-5p4v3hxmn6t-latest.netlify.app/Compressed_1755_North_Miami.png</image:loc>
+      <image:title>1755 Venice Ln APT 9W, North Miami, FL 33181</image:title>
+      <image:caption>Successful Real Estate Transaction by The Real Producers</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://same-5p4v3hxmn6t-latest.netlify.app/Compressed_14290_Miami.png</image:loc>
+      <image:title>14290 SW 73rd St, Miami, FL 33183</image:title>
+      <image:caption>Successful Real Estate Transaction by The Real Producers</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
