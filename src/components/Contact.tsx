@@ -26,11 +26,6 @@ const Contact = () => {
     setSuccessMessage('');
   };
 
-  const encode = (data: Record<string, string>) =>
-    Object.keys(data)
-      .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-      .join('&');
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const nextErrors: Record<string, string> = {};
@@ -55,12 +50,16 @@ const Contact = () => {
     try {
       setIsSubmitting(true);
       const formEl = e.currentTarget;
-      const payload = new FormData(formEl);
-      payload.set('form-name', formName);
+      const formData = new FormData(formEl);
+      formData.set('form-name', formName);
+      const body = new URLSearchParams();
+      formData.forEach((value, key) => {
+        body.append(key, String(value));
+      });
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode(Object.fromEntries(payload as any))
+        body: body.toString()
       });
 
       if (!response.ok) {
