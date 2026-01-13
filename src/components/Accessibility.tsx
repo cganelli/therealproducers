@@ -3,8 +3,8 @@ import React from 'react';
 
 const Accessibility = () => {
   return (
-    <section className="pt-28 pb-16 bg-stone-50 min-h-screen">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="pt-28 pb-16 bg-stone-50 min-h-screen px-4 sm:px-6 lg:px-10">
+      <div className="max-w-5xl mx-auto">
         <div className="card bg-white shadow-xl border border-stone-200">
           <div className="card-body space-y-6">
             <div className="flex items-start justify-between gap-4 flex-wrap">
