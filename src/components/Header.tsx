@@ -105,6 +105,7 @@ const Header = () => {
             </button>
             <Link to="/services" className="text-stone-700 hover:text-stone-900 transition-colors">Services</Link>
             <Link to="/accessibility" className="text-stone-700 hover:text-stone-900 transition-colors">Accessibility</Link>
+            <Link to="/privacy" className="text-stone-700 hover:text-stone-900 transition-colors">Privacy &amp; Terms</Link>
           </nav>
 
           {/* Contact Info */}
@@ -182,6 +183,7 @@ const Header = () => {
               </button>
               <Link to="/services" className="text-stone-700 hover:text-stone-900 transition-colors">Services</Link>
               <Link to="/accessibility" className="text-stone-700 hover:text-stone-900 transition-colors">Accessibility</Link>
+              <Link to="/privacy" className="text-stone-700 hover:text-stone-900 transition-colors">Privacy &amp; Terms</Link>
               <a href="tel:+17864239413" className="text-stone-700 hover:text-stone-900 font-medium transition-colors text-center">(786) 423-9413</a>
             </nav>
           </div>

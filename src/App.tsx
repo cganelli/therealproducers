@@ -12,6 +12,7 @@ import PastTransactions from './components/PastTransactions';
 import SEO from './components/SEO';
 import AgentSchema from './components/AgentSchema';
 import Accessibility from './components/Accessibility';
+import Privacy from './components/Privacy';
 
 function HomePage() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/past-transactions" element={<PastTransactions />} />
             <Route path="/accessibility" element={<Accessibility />} />
+            <Route path="/privacy" element={<Privacy />} />
           </Routes>
         </main>
         <Footer />
