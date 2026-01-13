@@ -1,8 +1,8 @@
-import type React from 'react';
+import React, { useState } from 'react';
 
 const Contact = () => {
   const formName = 'contact';
-  // Simple Netlify-handled form; no client-side JS submission needed.
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <section id="contact" className="py-20 bg-white">
@@ -106,6 +106,7 @@ const Contact = () => {
               name={formName}
               method="POST"
               action="/"
+              onSubmit={() => setSubmitted(true)}
             >
               <input type="hidden" name="form-name" value={formName} />
               {/* Honeypot field for spam mitigation */}
@@ -224,6 +225,12 @@ const Contact = () => {
               >
                 Send Message
               </button>
+
+              {submitted && (
+                <div className="alert alert-success shadow-sm text-sm" role="status" aria-live="polite">
+                  <span>Thank you! We received your message and will respond soon.</span>
+                </div>
+              )}
 
               <p className="text-xs text-stone-500 text-center">
                 By submitting this form, you consent to receiving marketing communications

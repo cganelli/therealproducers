@@ -1,6 +1,7 @@
-import type React from 'react';
+import React, { useState } from 'react';
 
 const Hero = () => {
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
@@ -74,6 +75,7 @@ const Hero = () => {
               data-netlify="true"
               netlify-honeypot="company"
               className="space-y-4"
+              onSubmit={() => setSubmitted(true)}
             >
               <input type="hidden" name="form-name" value="lead" />
               <input
@@ -129,6 +131,12 @@ const Hero = () => {
               >
                 Send Message
               </button>
+
+              {submitted && (
+                <div className="alert alert-success shadow-sm text-sm" role="status" aria-live="polite">
+                  <span>Thank you! We received your message and will respond soon.</span>
+                </div>
+              )}
 
               <p className="text-xs text-stone-500 text-center font-montserrat">
                 By providing your contact information, you consent to receiving marketing communications
