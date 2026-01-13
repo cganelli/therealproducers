@@ -1,26 +1,6 @@
 import type React from 'react';
-import { useState } from 'react';
 
 const Hero = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Handle form submission logic here
-  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
@@ -87,14 +67,28 @@ const Hero = () => {
               <p className="text-stone-600 font-montserrat">Connect with our expert team</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form
+              name="lead"
+              method="POST"
+              action="/"
+              data-netlify="true"
+              netlify-honeypot="company"
+              className="space-y-4"
+            >
+              <input type="hidden" name="form-name" value="lead" />
+              <input
+                type="text"
+                name="company"
+                tabIndex={-1}
+                autoComplete="off"
+                className="hidden"
+                aria-hidden="true"
+              />
               <div>
                 <input
                   type="text"
                   name="name"
                   placeholder="Full Name*"
-                  value={formData.name}
-                  onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 border border-stone-300 rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all font-montserrat"
                 />
@@ -105,8 +99,6 @@ const Hero = () => {
                   type="email"
                   name="email"
                   placeholder="Email Address*"
-                  value={formData.email}
-                  onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 border border-stone-300 rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all font-montserrat"
                 />
@@ -117,8 +109,6 @@ const Hero = () => {
                   type="tel"
                   name="phone"
                   placeholder="Phone Number*"
-                  value={formData.phone}
-                  onChange={handleInputChange}
                   required
                   className="w-full px-4 py-3 border border-stone-300 rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all font-montserrat"
                 />
@@ -128,8 +118,6 @@ const Hero = () => {
                 <textarea
                   name="message"
                   placeholder="How can we help you?"
-                  value={formData.message}
-                  onChange={handleInputChange}
                   rows={4}
                   className="w-full px-4 py-3 border border-stone-300 rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all resize-none font-montserrat"
                 />

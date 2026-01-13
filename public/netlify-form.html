@@ -18,5 +18,15 @@
     <textarea name="message"></textarea>
     <input type="text" name="company" />
   </form>
+
+  <!-- Lead form (hero) for Netlify detection -->
+  <form name="lead" method="POST" data-netlify="true" netlify-honeypot="company">
+    <input type="hidden" name="form-name" value="lead" />
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <textarea name="message"></textarea>
+    <input type="text" name="company" />
+  </form>
 </body>
 </html>
