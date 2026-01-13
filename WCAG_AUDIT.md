@@ -10,6 +10,12 @@ Report file: `axe-report.json`
 - Latest axe-core scan: **0 violations detected** (automated).
 - Note: Automated tools cover ~20–50% of issues; manual checks still required.
 
+## 2026-01-13 — Page: /privacy
+- Tool: `@axe-core/cli` 4.11.1 (Chrome headless)
+- URL: `http://127.0.0.1:5175/privacy` (local preview)
+- Result: **0 violations detected**
+- Saved report: `axe-report-privacy.json`
+
 ## How to rerun
 1. Build and preview locally:  
    - `bun run build`  
