@@ -31,7 +31,7 @@ const Contact = () => {
       .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
       .join('&');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const nextErrors: Record<string, string> = {};
     if (!formData.firstName.trim()) nextErrors.firstName = 'First name is required.';
@@ -54,14 +54,13 @@ const Contact = () => {
 
     try {
       setIsSubmitting(true);
+      const formEl = e.currentTarget;
+      const payload = new FormData(formEl);
+      payload.set('form-name', formName);
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({
-          'form-name': formName,
-          ...formData,
-          company: '' // honeypot stays empty on client
-        })
+        body: encode(Object.fromEntries(payload as any))
       });
 
       if (!response.ok) {
@@ -191,6 +190,8 @@ const Contact = () => {
               data-netlify="true"
               data-netlify-honeypot="company"
               name={formName}
+              method="POST"
+              action="/"
             >
               <input type="hidden" name="form-name" value={formName} />
               {/* Honeypot field for spam mitigation */}
