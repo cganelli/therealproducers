@@ -51,14 +51,6 @@ const Privacy = () => {
             </div>
 
             <div className="space-y-3">
-              <h2 className="text-2xl font-semibold text-stone-900">Listings via onehome.com</h2>
-              <p className="text-stone-700 leading-relaxed">
-                Listings displayed through the onehome.com frame do not require you to submit personal information to view them.
-                No PII is transmitted to view listings.
-              </p>
-            </div>
-
-            <div className="space-y-3">
               <h2 className="text-2xl font-semibold text-stone-900">Retention & Security</h2>
               <p className="text-stone-700 leading-relaxed">
                 We retain lead details only as long as needed to respond or as required by law. We use reasonable administrative
