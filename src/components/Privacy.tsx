@@ -3,23 +3,22 @@ import React from 'react';
 
 const Privacy = () => {
   return (
-    <section className="pt-28 pb-16 bg-stone-50 min-h-screen px-6 sm:px-8 lg:px-12">
-      <div className="max-w-5xl mx-auto">
+    <section className="pt-28 pb-16 bg-stone-50 min-h-screen px-6 sm:px-10 lg:px-14 xl:px-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-10">
         <div className="card bg-white shadow-xl border border-stone-200">
-          <div className="card-body space-y-8">
+          <div className="card-body space-y-8 px-4 sm:px-6 lg:px-10">
             <div>
               <p className="badge badge-neutral text-xs uppercase tracking-wide">Policy</p>
               <h1 className="text-4xl font-bold text-stone-900 mt-3">Privacy Policy</h1>
               <p className="text-stone-600 mt-3 leading-relaxed">
-                The Real Producers is a real estate site built to showcase listings and capture leads. We collect only the
-                contact information you submit—your name, email, and phone number—so we can respond to your inquiries. We do not
-                sell or share your information with third parties. Listing views are embedded from onehome.com; no personal
-                information is required or transmitted to view listings.
+                The Real Producers collects only the contact information you submit—your name, email, and phone number—so we can
+                respond to your inquiries. We do not sell or share your information with third parties. Listing views are embedded
+                from onehome.com. onehome.com’s collection, use, and handling of information is governed by its own privacy policy.
               </p>
               <p className="text-stone-600 mt-3 leading-relaxed">
-                By submitting a lead form, you consent to be contacted by our team regarding your request. You can reach us at
-                <a className="link link-primary ml-1" href="mailto:Viviana@TheRealProducers.com">Viviana@TheRealProducers.com</a> or{' '}
-                <a className="link link-primary" href="tel:+17864239413">(786) 423-9413</a> to update or delete your information.
+                By submitting a lead form, you consent to be contacted by our team regarding your request. You can reach us at{' '}
+                <a className="link link-primary" href="mailto:viviana@playafilms.com">viviana@playafilms.com</a> to update or delete
+                your information.
               </p>
             </div>
 
@@ -71,8 +70,7 @@ const Privacy = () => {
               <h2 className="text-2xl font-semibold text-stone-900">Your Choices</h2>
               <p className="text-stone-700 leading-relaxed">
                 You can request that we update or delete your submitted contact information by emailing{' '}
-                <a className="link link-primary" href="mailto:Viviana@TheRealProducers.com">Viviana@TheRealProducers.com</a> or calling{' '}
-                <a className="link link-primary" href="tel:+17864239413">(786) 423-9413</a>.
+                <a className="link link-primary" href="mailto:viviana@playafilms.com">viviana@playafilms.com</a>.
               </p>
             </div>
 
@@ -116,9 +114,8 @@ const Privacy = () => {
               <h3 className="text-xl font-semibold text-stone-900">Contact & Updates</h3>
               <p className="text-stone-700 leading-relaxed">
                 For questions about these Terms or our Privacy Policy, contact us at{' '}
-                <a className="link link-primary" href="mailto:Viviana@TheRealProducers.com">Viviana@TheRealProducers.com</a> or{' '}
-                <a className="link link-primary" href="tel:+17864239413">(786) 423-9413</a>. We may update these terms from time to
-                time; continued use of the site constitutes acceptance of any changes.
+                <a className="link link-primary" href="mailto:viviana@playafilms.com">viviana@playafilms.com</a>. We may update these
+                terms from time to time; continued use of the site constitutes acceptance of any changes.
               </p>
             </div>
           </div>
