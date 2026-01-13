@@ -1,7 +1,30 @@
 import React, { useState } from 'react';
 
 const Hero = () => {
-  const [submitted, setSubmitted] = useState(false);
+  const [leadStatus, setLeadStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleLeadSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    formData.set('form-name', 'lead');
+    const body = new URLSearchParams();
+    formData.forEach((value, key) => body.append(key, String(value)));
+
+    try {
+      const resp = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString()
+      });
+      if (!resp.ok) throw new Error(`Form submit failed: ${resp.status}`);
+      form.reset();
+      setLeadStatus('success');
+    } catch (err) {
+      console.error(err);
+      setLeadStatus('error');
+    }
+  };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
@@ -75,7 +98,7 @@ const Hero = () => {
               data-netlify="true"
               netlify-honeypot="company"
               className="space-y-4"
-              onSubmit={() => setSubmitted(true)}
+              onSubmit={handleLeadSubmit}
             >
               <input type="hidden" name="form-name" value="lead" />
               <input
@@ -132,9 +155,14 @@ const Hero = () => {
                 Send Message
               </button>
 
-              {submitted && (
+              {leadStatus === 'success' && (
                 <div className="alert alert-success shadow-sm text-sm" role="status" aria-live="polite">
                   <span>Thank you! We received your message and will respond soon.</span>
+                </div>
+              )}
+              {leadStatus === 'error' && (
+                <div className="alert alert-error shadow-sm text-sm" role="alert" aria-live="polite">
+                  <span>Submission failed. Please try again.</span>
                 </div>
               )}
 

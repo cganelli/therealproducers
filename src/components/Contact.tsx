@@ -3,6 +3,32 @@ import React, { useState } from 'react';
 const Contact = () => {
   const formName = 'contact';
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    formData.set('form-name', formName);
+    const body = new URLSearchParams();
+    formData.forEach((value, key) => body.append(key, String(value)));
+
+    try {
+      const resp = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString()
+      });
+      if (!resp.ok) throw new Error(`Form submit failed: ${resp.status}`);
+      form.reset();
+      setSubmitted(true);
+      setError(false);
+    } catch (err) {
+      console.error(err);
+      setError(true);
+      setSubmitted(false);
+    }
+  };
 
   return (
     <section id="contact" className="py-20 bg-white">
@@ -106,7 +132,7 @@ const Contact = () => {
               name={formName}
               method="POST"
               action="/"
-              onSubmit={() => setSubmitted(true)}
+              onSubmit={handleSubmit}
             >
               <input type="hidden" name="form-name" value={formName} />
               {/* Honeypot field for spam mitigation */}
@@ -229,6 +255,11 @@ const Contact = () => {
               {submitted && (
                 <div className="alert alert-success shadow-sm text-sm" role="status" aria-live="polite">
                   <span>Thank you! We received your message and will respond soon.</span>
+                </div>
+              )}
+              {error && (
+                <div className="alert alert-error shadow-sm text-sm" role="alert" aria-live="polite">
+                  <span>Submission failed. Please try again.</span>
                 </div>
               )}
 
