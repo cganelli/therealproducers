@@ -1,56 +1,8 @@
 import type React from 'react';
-import { useState } from 'react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    propertyType: '',
-    budget: '',
-    timeline: '',
-    message: ''
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [successMessage, setSuccessMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const formName = 'contact';
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-    setErrors((prev) => ({ ...prev, [e.target.name]: '' }));
-    setSuccessMessage('');
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const nextErrors: Record<string, string> = {};
-    if (!formData.firstName.trim()) nextErrors.firstName = 'First name is required.';
-    if (!formData.lastName.trim()) nextErrors.lastName = 'Last name is required.';
-    if (!formData.email.trim()) {
-      nextErrors.email = 'Email is required.';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      nextErrors.email = 'Enter a valid email address.';
-    }
-    if (!formData.phone.trim()) nextErrors.phone = 'Phone number is required.';
-    else if (!/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/.test(formData.phone.trim())) {
-      nextErrors.phone = 'Enter a valid phone number (digits, spaces, +, - allowed).';
-    }
-    if (!formData.propertyType) nextErrors.propertyType = 'Select a property type.';
-
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length > 0) {
-      return;
-    }
-
-    setIsSubmitting(true);
-    const formEl = e.currentTarget;
-    formEl.submit();
-  };
+  // Simple Netlify-handled form; no client-side JS submission needed.
 
   return (
     <section id="contact" className="py-20 bg-white">
@@ -148,7 +100,6 @@ const Contact = () => {
             <h3 className="text-2xl font-bold text-stone-800 mb-6">Send us a Message</h3>
 
             <form
-              onSubmit={handleSubmit}
               className="space-y-6"
               data-netlify="true"
               data-netlify-honeypot="company"
@@ -167,48 +118,24 @@ const Contact = () => {
                 aria-hidden="true"
               />
 
-              {errors.form && (
-                <div className="alert alert-error shadow-sm text-sm" role="alert">
-                  <span>{errors.form}</span>
-                </div>
-              )}
-
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <input
                     type="text"
                     name="firstName"
                     placeholder="First Name*"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
                     required
-                    aria-invalid={!!errors.firstName}
-                    aria-describedby={errors.firstName ? 'firstName-error' : undefined}
-                    className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all bg-white ${errors.firstName ? 'border-red-500' : 'border-stone-300'}`}
+                    className="w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all bg-white border-stone-300"
                   />
-                  {errors.firstName && (
-                    <p id="firstName-error" className="mt-2 text-sm text-red-600">
-                      {errors.firstName}
-                    </p>
-                  )}
                 </div>
                 <div>
                   <input
                     type="text"
                     name="lastName"
                     placeholder="Last Name*"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
                     required
-                    aria-invalid={!!errors.lastName}
-                    aria-describedby={errors.lastName ? 'lastName-error' : undefined}
-                    className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all bg-white ${errors.lastName ? 'border-red-500' : 'border-stone-300'}`}
+                    className="w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all bg-white border-stone-300"
                   />
-                  {errors.lastName && (
-                    <p id="lastName-error" className="mt-2 text-sm text-red-600">
-                      {errors.lastName}
-                    </p>
-                  )}
                 </div>
               </div>
 
@@ -218,36 +145,18 @@ const Contact = () => {
                     type="email"
                     name="email"
                     placeholder="Email Address*"
-                    value={formData.email}
-                    onChange={handleInputChange}
                     required
-                    aria-invalid={!!errors.email}
-                    aria-describedby={errors.email ? 'email-error' : undefined}
-                    className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all bg-white ${errors.email ? 'border-red-500' : 'border-stone-300'}`}
+                    className="w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all bg-white border-stone-300"
                   />
-                  {errors.email && (
-                    <p id="email-error" className="mt-2 text-sm text-red-600">
-                      {errors.email}
-                    </p>
-                  )}
                 </div>
                 <div>
                   <input
                     type="tel"
                     name="phone"
                     placeholder="Phone Number*"
-                    value={formData.phone}
-                    onChange={handleInputChange}
                     required
-                    aria-invalid={!!errors.phone}
-                    aria-describedby={errors.phone ? 'phone-error' : undefined}
-                    className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all bg-white ${errors.phone ? 'border-red-500' : 'border-stone-300'}`}
+                    className="w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all bg-white border-stone-300"
                   />
-                  {errors.phone && (
-                    <p id="phone-error" className="mt-2 text-sm text-red-600">
-                      {errors.phone}
-                    </p>
-                  )}
                 </div>
               </div>
 
@@ -257,12 +166,8 @@ const Contact = () => {
                   <select
                     id="propertyType"
                     name="propertyType"
-                    value={formData.propertyType}
-                    onChange={handleInputChange}
                     required
-                    aria-invalid={!!errors.propertyType}
-                    aria-describedby={errors.propertyType ? 'propertyType-error' : undefined}
-                    className={`w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all bg-white ${errors.propertyType ? 'border-red-500' : 'border-stone-300'}`}
+                    className="w-full px-4 py-3 border rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all bg-white border-stone-300"
                   >
                     <option value="">Property Type*</option>
                     <option value="buying">Buying</option>
@@ -270,19 +175,12 @@ const Contact = () => {
                     <option value="renting">Renting</option>
                     <option value="investing">Investment</option>
                   </select>
-                  {errors.propertyType && (
-                    <p id="propertyType-error" className="mt-2 text-sm text-red-600">
-                      {errors.propertyType}
-                    </p>
-                  )}
                 </div>
                 <div>
                   <label htmlFor="budget" className="sr-only">Budget Range</label>
                   <select
                     id="budget"
                     name="budget"
-                    value={formData.budget}
-                    onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-stone-300 rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all bg-white"
                   >
                     <option value="">Budget Range</option>
@@ -300,8 +198,6 @@ const Contact = () => {
                 <select
                   id="timeline"
                   name="timeline"
-                  value={formData.timeline}
-                  onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-stone-300 rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all bg-white"
                 >
                   <option value="">Timeline</option>
@@ -317,8 +213,6 @@ const Contact = () => {
                 <textarea
                   name="message"
                   placeholder="Tell us more about your real estate needs..."
-                  value={formData.message}
-                  onChange={handleInputChange}
                   rows={5}
                   className="w-full px-4 py-3 border border-stone-300 rounded-md focus:ring-2 focus:ring-[#df1e36] focus:border-transparent transition-all resize-none bg-white"
                 />
@@ -327,16 +221,9 @@ const Contact = () => {
               <button
                 type="submit"
                 className="w-full bg-[#df1e36] text-white py-3 rounded-md font-semibold hover:bg-[#c01830] transition-colors font-montserrat disabled:opacity-70"
-                disabled={isSubmitting}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                Send Message
               </button>
-
-              {successMessage && (
-                <div className="alert alert-success shadow-sm text-sm" role="status" aria-live="polite">
-                  <span>{successMessage}</span>
-                </div>
-              )}
 
               <p className="text-xs text-stone-500 text-center">
                 By submitting this form, you consent to receiving marketing communications
