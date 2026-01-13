@@ -26,7 +26,7 @@ const Contact = () => {
     setSuccessMessage('');
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const nextErrors: Record<string, string> = {};
     if (!formData.firstName.trim()) nextErrors.firstName = 'First name is required.';
@@ -47,45 +47,9 @@ const Contact = () => {
       return;
     }
 
-    try {
-      setIsSubmitting(true);
-      const formEl = e.currentTarget;
-      const formData = new FormData(formEl);
-      formData.set('form-name', formName);
-      const body = new URLSearchParams();
-      formData.forEach((value, key) => {
-        body.append(key, String(value));
-      });
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body.toString()
-      });
-
-      if (!response.ok) {
-        setErrors({ form: 'Submission failed. Please try again.' });
-        setIsSubmitting(false);
-        return;
-      }
-
-      setSuccessMessage('Thank you! We received your message and will respond soon.');
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        propertyType: '',
-        budget: '',
-        timeline: '',
-        message: ''
-      });
-      setErrors({});
-    } catch (err) {
-      console.error(err);
-      setErrors({ form: 'Network error. Please try again.' });
-    } finally {
-      setIsSubmitting(false);
-    }
+    setIsSubmitting(true);
+    const formEl = e.currentTarget;
+    formEl.submit();
   };
 
   return (
